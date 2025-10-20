@@ -1,4 +1,4 @@
-# Monash SoDa Replication Template Repository
+# Monash SoDa Replication Template
 
 **Update: The template has moved into the SoDa account: https://github.com/sodalabsio/soda_replicator.**
 

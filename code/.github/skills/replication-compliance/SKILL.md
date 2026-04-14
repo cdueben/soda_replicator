@@ -6,7 +6,7 @@ metadata:
   author: sodalabsio
   version: "1.2"
   standard: DCAS v1.0
-  repository: https://github.com/Patrick-Healy/soda_replicator_dev
+  repository: https://github.com/cdueben/soda_replicator
 compatibility: Requires file system access. Works with Stata, R, Python, MATLAB, and Julia projects.
 allowed-tools: Read Glob Grep Bash(ls:*) Bash(find:*) Bash(cat:*) Bash(head:*) Bash(git:*) Bash(curl:*)
 ---
@@ -524,7 +524,7 @@ head -15 ~/.claude/skills/replication-compliance/SKILL.md 2>/dev/null || \
 head -15 ~/.gemini/skills/replication-compliance/SKILL.md 2>/dev/null
 
 # Check latest version from GitHub
-curl -s https://raw.githubusercontent.com/Patrick-Healy/soda_replicator_dev/main/code/.github/skills/replication-compliance/SKILL.md | head -15
+curl -s https://raw.githubusercontent.com/cdueben/soda_replicator/main/code/.github/skills/replication-compliance/SKILL.md | head -15
 ```
 
 ### Install Updates
@@ -534,7 +534,7 @@ If an update is available, offer to install it:
 ```bash
 # Download and run the installer
 cd /tmp && rm -rf replicator-update && \
-git clone --depth 1 https://github.com/Patrick-Healy/soda_replicator_dev.git soda_replicator_dev-update && \
+git clone --depth 1 https://github.com/cdueben/soda_replicator.git soda_replicator_dev-update && \
 cd soda_replicator_dev-update && bash code/.github/skills/replication-compliance/install.sh && \
 cd / && rm -rf /tmp/soda_replicator_dev-update
 ```
@@ -542,7 +542,7 @@ cd / && rm -rf /tmp/soda_replicator_dev-update
 Or guide the user to run manually:
 ```bash
 # User can run this one-liner to update
-curl -fsSL https://raw.githubusercontent.com/Patrick-Healy/soda_replicator_dev/main/code/.github/skills/replication-compliance/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/cdueben/soda_replicator/main/code/.github/skills/replication-compliance/install.sh | bash
 ```
 
 ### Version History

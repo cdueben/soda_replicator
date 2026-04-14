@@ -328,7 +328,7 @@ Codex will react to your comment with a 👀 emoji to confirm it has seen the re
 A DCAS compliance audit skill is bundled at `code/.github/skills/replication-compliance/` and works with Claude Code, Codex, Cursor, and Gemini. To install it globally across all your projects:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Patrick-Healy/soda_replicator_dev/main/code/.github/skills/replication-compliance/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/cdueben/soda_replicator/main/code/.github/skills/replication-compliance/install.sh | bash
 ```
 
 > **Note:** This installs files into your AI tool's global configuration directory. Read [`code/.github/skills/replication-compliance/README.md`](code/.github/skills/replication-compliance/README.md) before running.

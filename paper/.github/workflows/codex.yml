@@ -1,0 +1,39 @@
+name: Codex Assistant
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+  actions: read
+
+jobs:
+  codex-response:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: openai/codex-action@v1.6
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt: |
+            Review this paper against the project's checklist.md.
+            Only check items marked [x] in the checklist.
+            For each checked item, report pass or fail with a brief explanation.
+            For failures, cite the specific location (section, table number, file)
+            and suggest a fix.
+            Key rules: tables/figures match text, standard errors in parentheses
+            with clustering specified, significance stars defined in notes,
+            results consistent across manuscript and presentation.

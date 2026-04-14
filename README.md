@@ -311,12 +311,20 @@ The workflow file is already included at `.github/workflows/codex.yml`. Codex wo
 
 Requires a ChatGPT **Plus, Pro, Team, Edu, or Enterprise** subscription. Free accounts have limited-time access only.
 
+**If you have not used Codex before:**
 1. Go to [chatgpt.com/codex](https://chatgpt.com/codex)
 2. Click **Connect GitHub** and authorise access to your repository
 3. Go to [chatgpt.com/codex/settings/environments](https://chatgpt.com/codex/settings/environments) — use the two dropdowns to select your **organisation** and then your **repository**, then click **Create environment**. If your repository does not appear in the dropdown, wait 5 minutes and refresh — newly connected repos can take a moment to appear. Wait for the environment to finish building before continuing
 4. Click **Settings** in the top-right corner of the Codex interface
 5. Under **Code Review**, toggle on **Enable code review**
 6. Optionally toggle on **Automatic reviews** to have Codex review every new pull request without tagging
+
+**If you have already connected Codex to other repositories:**
+1. Go to [chatgpt.com/codex](https://chatgpt.com/codex)
+2. Click the repository dropdown (top-left of the interface) → click **Manage environments**
+3. Create a new environment for your repository — use the two dropdowns to select your **organisation** and **repository**, then click **Create environment**. Wait for it to finish building
+4. Click **Settings** (top-right) → **Code Review** → toggle **Enable code review** on
+5. Optionally toggle on **Automatic reviews**
 
 > **Troubleshooting:** If you see a comment from the `chatgpt-codex-connector` bot on a pull request saying *"To use Codex here, create an environment for this repo"*, the environment in step 3 has not been created. Return to [chatgpt.com/codex](https://chatgpt.com/codex), select your repository, and click **Create environment**.
 

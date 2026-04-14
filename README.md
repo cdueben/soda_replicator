@@ -264,7 +264,7 @@ Requires a Claude **Pro, Max, Team, or Enterprise** subscription. Free accounts 
 4. Under **Repository access**, select **Only select repositories** (recommended — avoid granting access to all repos)
 5. Use the dropdown to find and select your `code` repository (e.g. `your-project_code`). If you also want Claude to review the paper repo, add that too
 6. Click **Install** (or **Save** if reconfiguring)
-7. You will be redirected to a confirmation page — no further action needed there
+7. You will be redirected to a confirmation page — no further action needed there. The app automatically sets the `CLAUDE_CODE_OAUTH_TOKEN` secret in your repository
 
 #### Option B — Anthropic API key
 

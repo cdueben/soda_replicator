@@ -326,7 +326,7 @@ Requires a ChatGPT **Plus, Pro, Team, Edu, or Enterprise** subscription. Free ac
 4. Click **Settings** (top-right) → **Code Review** → toggle **Enable code review** on
 5. Optionally toggle on **Automatic reviews**
 
-> **Troubleshooting:** If you see a comment from the `chatgpt-codex-connector` bot on a pull request saying *"To use Codex here, create an environment for this repo"*, the environment in step 3 has not been created. Return to [chatgpt.com/codex](https://chatgpt.com/codex), select your repository, and click **Create environment**.
+> **Important:** The environment creation step is required before `@codex` will work. If you skip it, the `chatgpt-codex-connector` bot will reply to any `@codex` mention in issues or pull requests with *"To use Codex here, create an environment for this repo"*. If you see this message, go to [chatgpt.com/codex/settings/environments](https://chatgpt.com/codex/settings/environments), select your repository, and click **Create environment**.
 
 #### Option B — OpenAI API key
 

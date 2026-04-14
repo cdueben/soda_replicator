@@ -245,6 +245,8 @@ This template includes GitHub workflows for AI-powered code review. The workflow
 
 The workflow file is already included at `.github/workflows/claude.yml`. Claude reviews code and paper drafts against your `checklist.md` when you tag `@claude` in an issue or pull request.
 
+Choose one option — you do not need both.
+
 #### Option A — Claude subscription (no API key needed)
 
 Requires a Claude **Pro, Max, Team, or Enterprise** subscription. Free accounts are not supported.

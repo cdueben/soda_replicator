@@ -31,9 +31,17 @@ git remote add origin https://github.com/your-github-name/name-of-your-project_c
 git push -u origin main
 ```
 
-1.7 Repeat step 1.6 for the `paper` directory.
+1.6 Open the terminal locally in the `paper` folder and enter the following commands:
 
-1.8 Configure the two GitHub repositories on the website:
+```bash
+git init
+git add .
+git commit -m "initial commit"
+git remote add origin https://github.com/your-github-name/name-of-your-project_paper.git
+git push -u origin main
+```
+
+1.7 Configure the two GitHub repositories on the website:
    + **Settings › Collaborators** → add co-authors & supervisors
    + (Optional) Protect `main` branch (enforce code review) & enable GitHub Actions
 

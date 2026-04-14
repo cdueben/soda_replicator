@@ -87,9 +87,9 @@ jobs:
       - name: Run Compliance Check
         id: check
         run: |
-          python .github/skills/replication-compliance/scripts/check_compliance.py . --json > compliance.json
+          python .github/scripts/check_compliance.py . --json > compliance.json
           echo "## Compliance Report" >> $GITHUB_STEP_SUMMARY
-          python .github/skills/replication-compliance/scripts/check_compliance.py . >> $GITHUB_STEP_SUMMARY
+          python .github/scripts/check_compliance.py . >> $GITHUB_STEP_SUMMARY
 
       - name: Post Results
         uses: actions/github-script@v7
@@ -115,7 +115,7 @@ When a PR fails the automated check:
 
 1. Open [claude.ai/code](https://claude.ai/code) or [chatgpt.com/codex](https://chatgpt.com/codex)
 2. Connect to the repository
-3. Ask: *"Run the compliance checker at `.github/skills/replication-compliance/scripts/check_compliance.py` and fix any errors found"*
+3. Ask: *"Run the compliance checker at `.github/scripts/check_compliance.py` and fix any errors found"*
 4. Review the AI's changes in the diff view
 5. Create a PR with the fixes
 
@@ -316,7 +316,7 @@ jobs:
             3. Check dependency pinning
             4. Verify documentation updates
 
-            Reference: .github/skills/replication-compliance/SKILL.md
+            Reference: skills/replication-compliance/SKILL.md (install globally via curl — see README)
 ```
 
 ### Project Context
@@ -607,7 +607,7 @@ Create `.cursor/permissions.json`:
     "allow": [
       "Read(**/*)",
       "Shell(grep)",
-      "Shell(python .github/skills/replication-compliance/scripts/check_compliance.py)"
+      "Shell(python .github/scripts/check_compliance.py)"
     ],
     "deny": [
       "Shell(git)",
@@ -663,7 +663,7 @@ Create `.agent/workflows/compliance-check.md`:
 
 Run the DCAS compliance checker on the current project:
 
-1. Execute: `python .github/skills/replication-compliance/scripts/check_compliance.py .`
+1. Execute: `python .github/scripts/check_compliance.py .`
 2. Review the output for errors and warnings
 3. Suggest fixes for any issues found
 ```
@@ -777,7 +777,7 @@ All AI reviewers can leverage the automated compliance checker:
 - name: Run Compliance Check
   id: compliance
   run: |
-    python .github/skills/replication-compliance/scripts/check_compliance.py . --json > compliance.json
+    python .github/scripts/check_compliance.py . --json > compliance.json
     echo "results<<EOF" >> $GITHUB_OUTPUT
     cat compliance.json >> $GITHUB_OUTPUT
     echo "EOF" >> $GITHUB_OUTPUT

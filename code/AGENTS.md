@@ -42,11 +42,11 @@ When reviewing a pull request or issue, check it against `checklist.md`. Only re
 
 ## Replication Compliance Skill
 
-A full DCAS audit skill is available at `.github/skills/replication-compliance/SKILL.md`.
+The automated DCAS compliance checker is available at `.github/scripts/check_compliance.py`.
 
 To run the automated checker:
 ```bash
-python .github/skills/replication-compliance/scripts/check_compliance.py .
+python .github/scripts/check_compliance.py .
 ```
 
 ## Git Safety

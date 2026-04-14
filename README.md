@@ -31,9 +31,17 @@ git remote add origin https://github.com/your-github-name/name-of-your-project_c
 git push -u origin main
 ```
 
-1.7 Repeat step 1.6 for the `paper` directory.
+1.6 Open the terminal locally in the `paper` folder and enter the following commands:
 
-1.8 Configure the two GitHub repositories on the website:
+```bash
+git init
+git add .
+git commit -m "initial commit"
+git remote add origin https://github.com/your-github-name/name-of-your-project_paper.git
+git push -u origin main
+```
+
+1.7 Configure the two GitHub repositories on the website:
    + **Settings › Collaborators** → add co-authors & supervisors
    + (Optional) Protect `main` branch (enforce code review) & enable GitHub Actions
 
@@ -303,6 +311,7 @@ The workflow file is already included at `.github/workflows/codex.yml`. Codex wo
 
 Requires a ChatGPT **Plus, Pro, Team, Edu, or Enterprise** subscription. Free accounts have limited-time access only.
 
+**If you have not used Codex before:**
 1. Go to [chatgpt.com/codex](https://chatgpt.com/codex)
 2. Click **Connect GitHub** and authorise access to your repository
 3. Go to [chatgpt.com/codex/settings/environments](https://chatgpt.com/codex/settings/environments) — use the two dropdowns to select your **organisation** and then your **repository**, then click **Create environment**. If your repository does not appear in the dropdown, wait 5 minutes and refresh — newly connected repos can take a moment to appear. Wait for the environment to finish building before continuing
@@ -310,7 +319,14 @@ Requires a ChatGPT **Plus, Pro, Team, Edu, or Enterprise** subscription. Free ac
 5. Under **Code Review**, toggle on **Enable code review**
 6. Optionally toggle on **Automatic reviews** to have Codex review every new pull request without tagging
 
-> **Troubleshooting:** If you see a comment from the `chatgpt-codex-connector` bot on a pull request saying *"To use Codex here, create an environment for this repo"*, the environment in step 3 has not been created. Return to [chatgpt.com/codex](https://chatgpt.com/codex), select your repository, and click **Create environment**.
+**If you have already connected Codex to other repositories:**
+1. Go to [chatgpt.com/codex](https://chatgpt.com/codex)
+2. Click the repository dropdown (top-left of the interface) → click **Manage environments**
+3. Create a new environment for your repository — use the two dropdowns to select your **organisation** and **repository**, then click **Create environment**. Wait for it to finish building
+4. Click **Settings** (top-right) → **Code Review** → toggle **Enable code review** on
+5. Optionally toggle on **Automatic reviews**
+
+> **Important:** The environment creation step is required before `@codex` will work. If you skip it, the `chatgpt-codex-connector` bot will reply to any `@codex` mention in issues or pull requests with *"To use Codex here, create an environment for this repo"*. If you see this message, go to [chatgpt.com/codex/settings/environments](https://chatgpt.com/codex/settings/environments), select your repository, and click **Create environment**.
 
 #### Option B — OpenAI API key
 
@@ -339,10 +355,10 @@ Codex will react to your comment with a 👀 emoji to confirm it has seen the re
 
 ### Replication Compliance Skill
 
-A DCAS compliance audit skill is bundled at `code/.github/skills/replication-compliance/` and works with Claude Code, Codex, Cursor, and Gemini. To install it globally across all your projects:
+A DCAS compliance audit skill is available at `skills/replication-compliance/` in the template and works with Claude Code, Codex, Cursor, and Gemini. To install it globally across all your projects:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/cdueben/soda_replicator/main/code/.github/skills/replication-compliance/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/cdueben/soda_replicator/main/skills/replication-compliance/install.sh | bash
 ```
 
-> **Note:** This installs files into your AI tool's global configuration directory. Read [`code/.github/skills/replication-compliance/README.md`](code/.github/skills/replication-compliance/README.md) before running.
+> **Note:** This installs files into your AI tool's global configuration directory. Read [`skills/replication-compliance/README.md`](skills/replication-compliance/README.md) before running.

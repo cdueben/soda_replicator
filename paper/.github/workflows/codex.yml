@@ -18,6 +18,11 @@ permissions:
 
 jobs:
   codex-response:
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@codex')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@codex')) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@codex')) ||
+      (github.event_name == 'issues' && (contains(github.event.issue.body, '@codex') || contains(github.event.issue.title, '@codex')))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

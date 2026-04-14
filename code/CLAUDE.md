@@ -23,4 +23,4 @@ When mentioned with `@claude` in an issue or pull request, review the code again
 
 ## Skill
 
-A detailed DCAS compliance skill is available at `.github/skills/replication-compliance/SKILL.md`. Use it when asked to do a full replication audit.
+A DCAS compliance skill can be installed globally via the install command in the main README. The automated checker is available at `.github/scripts/check_compliance.py`.

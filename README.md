@@ -251,24 +251,33 @@ Requires a Claude **Pro, Max, Team, or Enterprise** subscription. Free accounts 
 
 **Via Claude Code (if you have it installed):**
 1. Open a terminal inside your `code/` or `paper/` directory
-2. Run `/install-github-app` and follow the prompts
-3. Close any pull request it opens — the workflow file is already included in this template
+2. Run `claude` to open Claude Code
+3. Run `/install-github-app` and follow the prompts
+4. Close any pull request it opens — the workflow file is already included in this template
 
 **Via browser:**
 1. Go to [github.com/apps/claude](https://github.com/apps/claude)
-2. Click **Install**
-3. Under **Repository access**, select **Only select repositories** and choose your repository
-4. Click **Install**
+2. Click **Install** (or **Configure** if you have previously installed it)
+3. GitHub will show the permissions Claude requests:
+   - Read access to actions, checks, and metadata
+   - Read and write access to code, discussions, issues, pull requests, and workflows
+4. Under **Repository access**, select **Only select repositories** (recommended — avoid granting access to all repos)
+5. Use the dropdown to find and select your `code` repository (e.g. `your-project_code`). If you also want Claude to review the paper repo, add that too
+6. Click **Install** (or **Save** if reconfiguring)
+7. You will be redirected to a confirmation page — no further action needed there
 
 #### Option B — Anthropic API key
 
 1. Get an API key from [console.anthropic.com](https://console.anthropic.com/) → **API Keys** → **Create Key**
-2. In your GitHub repository, click the **Settings** tab (top navigation bar)
-3. In the left sidebar, scroll to **Security** → click **Secrets and variables** → click **Actions**
-4. Click the **New repository secret** button
-5. In **Name** enter: `ANTHROPIC_API_KEY`
-6. In **Secret** paste your API key
-7. Click **Add secret**
+2. Add it to your repository secrets:
+
+   **Via terminal (recommended):**
+   ```bash
+   gh secret set ANTHROPIC_API_KEY --repo your-github-name/your-project_code
+   ```
+   Paste your key when prompted.
+
+   **Via browser:** In your repository go to **Settings → Secrets and variables → Actions → New repository secret**, set name to `ANTHROPIC_API_KEY`, paste your key, click **Add secret**
 
 The workflow file is already at `.github/workflows/claude.yml` — no further changes needed.
 
@@ -304,12 +313,15 @@ Requires a ChatGPT **Plus, Pro, Team, Edu, or Enterprise** subscription. Free ac
 #### Option B — OpenAI API key
 
 1. Get an API key from [platform.openai.com](https://platform.openai.com/) → **API Keys** → **Create new secret key**
-2. In your GitHub repository, click the **Settings** tab (top navigation bar)
-3. In the left sidebar, scroll to **Security** → click **Secrets and variables** → click **Actions**
-4. Click the **New repository secret** button
-5. In **Name** enter: `OPENAI_API_KEY`
-6. In **Secret** paste your API key
-7. Click **Add secret**
+2. Add it to your repository secrets:
+
+   **Via terminal (recommended):**
+   ```bash
+   gh secret set OPENAI_API_KEY --repo your-github-name/your-project_code
+   ```
+   Paste your key when prompted.
+
+   **Via browser:** In your repository go to **Settings → Secrets and variables → Actions → New repository secret**, set name to `OPENAI_API_KEY`, paste your key, click **Add secret**
 
 The workflow file is already at `.github/workflows/codex.yml` — no further changes needed.
 

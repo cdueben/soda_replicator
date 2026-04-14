@@ -13,7 +13,7 @@
 set -e
 
 SKILL_NAME="replication-compliance"
-REPO="cdueben/soda_replicator"
+REPO="Patrick-Healy/soda_replicator_dev"
 SKILL_PATH="skills/replication-compliance"
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'

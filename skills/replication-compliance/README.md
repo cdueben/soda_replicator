@@ -7,7 +7,7 @@ Audit research repositories against the [Data and Code Availability Standard (DC
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/cdueben/soda_replicator/main/code/.github/skills/replication-compliance/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/cdueben/soda_replicator/main/skills/replication-compliance/install.sh | bash
 ```
 
 The installer detects which AI tools you have installed (Claude Code, Codex, Cursor, Gemini) and copies the skill files to the correct location for each one. Only tools that are already installed on your machine are affected.

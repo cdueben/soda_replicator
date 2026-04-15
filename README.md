@@ -357,46 +357,6 @@ curl -fsSL https://raw.githubusercontent.com/cdueben/soda_replicator/main/skills
 ```
 
 > **Note:** This installs files into your AI tool's global configuration directory. Read [`skills/replication-compliance/README.md`](skills/replication-compliance/README.md) before running.
-## Claude Assistant GitHub Workflow Setup
-
-This template includes a GitHub workflow for Claude Assistant, an AI-powered code review and assistance tool. Follow these steps to activate it:
-
-### Prerequisites
-- GitHub repository with appropriate permissions
-- Anthropic API key (get from https://console.anthropic.com/)
-
-### Setup Steps
-
-#### 1. Add Anthropic API Key to Repository Secrets
-1. Go to your repository on GitHub
-2. Navigate to Settings → Secrets and variables → Actions
-3. Click "New repository secret"
-4. Name: `ANTHROPIC_API_KEY`
-5. Value: Your Anthropic API key
-6. Click "Add secret"
-
-#### 2. Verify Workflow File
-The workflow file is already included at `.github/workflows/claude.yml`. It will automatically:
-- Trigger on issue comments, pull request comments, and reviews
-- Respond to issues being opened or assigned
-- Use GitHub's built-in `GITHUB_TOKEN` for repository access
-
-#### 3. How It Works
-Claude will automatically respond to:
-- New issue comments
-- New pull request review comments
-- Issues being opened or assigned
-- Pull request reviews being submitted
-
-#### 4. Testing
-To test the workflow:
-1. Create a new issue in your repository
-2. Comment on the issue mentioning `@claude`
-3. Claude should respond automatically within a few minutes
-
-### Notes
-- Ensure your Anthropic API key has sufficient usage limits
-- Monitor GitHub Actions usage to avoid unexpected costs
 
 ## Useful Resources
 

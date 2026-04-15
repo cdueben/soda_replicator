@@ -46,7 +46,19 @@ git push -u origin main
 ```
 1.6 Repeat step 1.5 for the `paper` directory.
 
----
+1.6 Open the terminal locally in the `paper` folder and enter the following commands:
+
+```bash
+git init
+git add .
+git commit -m "initial commit"
+git remote add origin https://github.com/your-github-name/name-of-your-project_paper.git
+git push -u origin main
+```
+
+1.7 Configure the two GitHub repositories on the website:
+   + **Settings › Collaborators** → add co-authors & supervisors
+   + (Optional) Protect `main` branch (enforce code review) & enable GitHub Actions
 
 #### Option B: If you want to keep the whole project in a single repository:
 
@@ -236,6 +248,125 @@ Some journals' data editors are not overly technical. To avoid various rounds of
 
 Though requirements are not identical across journals, they tend to be similar. There are various guides on how to craft replication packages more broadly. Cynthia has written fantastic [slides](https://cynthiahqy.github.io/monash-quarto-aea/02a-template/) on replication packages in Quarto. And the [Data and Code Availability Standard](https://datacodestandard.org/) lists rules that a number of journals agree on.
 
+## AI Code Review Setup
+
+This template includes GitHub workflows for AI-powered code review. The workflows live at `.github/workflows/` inside your `code/` and `paper/` repositories. Two tools are supported: **Claude** (Anthropic) and **Codex** (OpenAI). Activate whichever you have access to — or both.
+
+---
+
+### Claude Assistant
+
+The workflow file is already included at `.github/workflows/claude.yml`. Claude reviews code and paper drafts against your `checklist.md` when you tag `@claude` in an issue or pull request.
+
+Choose one option — you do not need both. Option A uses your Claude subscription to authenticate via the GitHub App. Option B uses an Anthropic API key billed per use. Either will activate the same workflow.
+
+#### Option A — Claude subscription (no API key needed)
+
+Requires a Claude **Pro, Max, Team, or Enterprise** subscription. Free accounts are not supported.
+
+**Via Claude Code (if you have it installed):**
+1. Open a terminal inside your `code/` or `paper/` directory
+2. Run `claude` to open Claude Code
+3. Run `/install-github-app` and follow the prompts
+4. Close any pull request it opens — the workflow file is already included in this template
+
+**Via browser:**
+1. Go to [github.com/apps/claude](https://github.com/apps/claude)
+2. Click **Install** (or **Configure** if you have previously installed it)
+3. GitHub will show the permissions Claude requests:
+   - Read access to actions, checks, and metadata
+   - Read and write access to code, discussions, issues, pull requests, and workflows
+4. Under **Repository access**, select **Only select repositories** (recommended — avoid granting access to all repos)
+5. Use the dropdown to find and select your `code` repository (e.g. `your-project_code`). If you also want Claude to review the paper repo, add that too
+6. Click **Install** (or **Save** if reconfiguring)
+7. You will be redirected to a confirmation page — no further action needed there. The app automatically sets the `CLAUDE_CODE_OAUTH_TOKEN` secret in your repository
+
+#### Option B — Anthropic API key
+
+1. Get an API key from [console.anthropic.com](https://console.anthropic.com/) → **API Keys** → **Create Key**
+2. Add it to your repository secrets:
+
+   **Via terminal (recommended):**
+   ```bash
+   gh secret set ANTHROPIC_API_KEY --repo your-github-name/your-project_code
+   ```
+   Paste your key when prompted.
+
+   **Via browser:** In your repository go to **Settings → Secrets and variables → Actions → New repository secret**, set name to `ANTHROPIC_API_KEY`, paste your key, click **Add secret**
+
+The workflow file is already at `.github/workflows/claude.yml` — no further changes needed.
+
+#### Using Claude
+
+- Open an issue or pull request in your repository
+- Add a comment mentioning `@claude` (e.g., `@claude please review against the checklist`)
+- Claude responds within a few minutes, checking only the `[x]` items in `checklist.md`
+
+#### Notes
+- Ensure your API key has sufficient usage limits (Option B only)
+- Monitor the **Actions** tab in your repository to track usage and spot any errors
+
+---
+
+### Codex Assistant
+
+The workflow file is already included at `.github/workflows/codex.yml`. Codex works similarly to Claude — tag `@codex` in pull request comments.
+
+#### Option A — ChatGPT subscription (no API key needed)
+
+Requires a ChatGPT **Plus, Pro, Team, Edu, or Enterprise** subscription. Free accounts have limited-time access only.
+
+**If you have not used Codex before:**
+1. Go to [chatgpt.com/codex](https://chatgpt.com/codex)
+2. Click **Connect GitHub** and authorise access to your repository
+3. Go to [chatgpt.com/codex/settings/environments](https://chatgpt.com/codex/settings/environments) — use the two dropdowns to select your **organisation** and then your **repository**, then click **Create environment**. If your repository does not appear in the dropdown, wait 5 minutes and refresh — newly connected repos can take a moment to appear. Wait for the environment to finish building before continuing
+4. Click **Settings** in the top-right corner of the Codex interface
+5. Under **Code Review**, toggle on **Enable code review**
+6. Optionally toggle on **Automatic reviews** to have Codex review every new pull request without tagging
+
+**If you have already connected Codex to other repositories:**
+1. Go to [chatgpt.com/codex](https://chatgpt.com/codex)
+2. Click the repository dropdown (top-left of the interface) → click **Manage environments**
+3. Create a new environment for your repository — use the two dropdowns to select your **organisation** and **repository**, then click **Create environment**. Wait for it to finish building
+4. Click **Settings** (top-right) → **Code Review** → toggle **Enable code review** on
+5. Optionally toggle on **Automatic reviews**
+
+> **Important:** The environment creation step is required before `@codex` will work. If you skip it, the `chatgpt-codex-connector` bot will reply to any `@codex` mention in issues or pull requests with *"To use Codex here, create an environment for this repo"*. If you see this message, go to [chatgpt.com/codex/settings/environments](https://chatgpt.com/codex/settings/environments), select your repository, and click **Create environment**.
+
+#### Option B — OpenAI API key
+
+1. Get an API key from [platform.openai.com](https://platform.openai.com/) → **API Keys** → **Create new secret key**
+2. Add it to your repository secrets:
+
+   **Via terminal (recommended):**
+   ```bash
+   gh secret set OPENAI_API_KEY --repo your-github-name/your-project_code
+   ```
+   Paste your key when prompted.
+
+   **Via browser:** In your repository go to **Settings → Secrets and variables → Actions → New repository secret**, set name to `OPENAI_API_KEY`, paste your key, click **Add secret**
+
+The workflow file is already at `.github/workflows/codex.yml` — no further changes needed.
+
+#### Using Codex
+
+- Add a comment `@codex review` in any pull request
+- Codex reads `AGENTS.md` automatically for project conventions — no extra instructions needed
+- Or ask in plain language: *"check this against our replication standards"*
+
+Codex will react to your comment with a 👀 emoji to confirm it has seen the request — this is normal. The full review will appear as a follow-up comment once it finishes, which can take a few minutes. If you want to check progress or see if there was an error, go to [chatgpt.com/codex](https://chatgpt.com/codex) and look for the task in the left sidebar under your repository.
+
+---
+
+### Replication Compliance Skill
+
+A DCAS compliance audit skill is available at `skills/replication-compliance/` in the template and works with Claude Code, Codex, Cursor, and Gemini. To install it globally across all your projects:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/cdueben/soda_replicator/main/skills/replication-compliance/install.sh | bash
+```
+
+> **Note:** This installs files into your AI tool's global configuration directory. Read [`skills/replication-compliance/README.md`](skills/replication-compliance/README.md) before running.
 ## Claude Assistant GitHub Workflow Setup
 
 This template includes a GitHub workflow for Claude Assistant, an AI-powered code review and assistance tool. Follow these steps to activate it:

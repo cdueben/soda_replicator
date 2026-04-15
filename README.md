@@ -134,11 +134,11 @@ After each milestone:
 
 ### 6. Run the AI Code Checker
 
-Invoke the AI checker with `@claude` in an issue or a pull request to:
+Invoke the AI checker with `@claude` or `@codex` in an issue or a pull request to:
 + Read checklist.md.
 + Evaluate to what extent the contents of the repository align with the checklist.
 
-If this is your first time using Claude on GitHub, read the [setup guide](#claude-assistant-github-workflow-setup) below.
+If this is your first time using Claude or Codex on GitHub, read the [setup guide](#ai-code-review-setup) below.
 
 ---
 

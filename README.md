@@ -343,6 +343,7 @@ The workflow file is already at `.github/workflows/codex.yml` — no further cha
 - Add a comment `@codex review` in any pull request
 - Codex reads `AGENTS.md` automatically for project conventions — no extra instructions needed
 - Or ask in plain language: *"check this against our replication standards"*
+- This can assess the checklist, just as Claude does
 
 Codex will react to your comment with a 👀 emoji to confirm it has seen the request — this is normal. The full review will appear as a follow-up comment once it finishes, which can take a few minutes. If you want to check progress or see if there was an error, go to [chatgpt.com/codex](https://chatgpt.com/codex) and look for the task in the left sidebar under your repository.
 

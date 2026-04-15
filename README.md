@@ -18,7 +18,7 @@ This repository provides a **template for reproducible, collaborative applied-ec
   - [Version Control](#version-control)
   - [Code Quality](#code-quality)
   - [Replication Package](#replication-package)
-  - [Claude Assistant GitHub Workflow Setup](#claude-assistant-github-workflow-setup)
+  - [AI Code Review Setup](#ai-code-review-setup)
   - [Useful Resources](#8-useful-resources)
 
 ## How to Use This Repo

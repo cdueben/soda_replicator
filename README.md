@@ -130,11 +130,6 @@ After each milestone:
 + Select elements with `[x]`.
 + Request review by your co-authors or supervisor via an issue or a pull request.
 
-8.6 LaTeX
-+ [Overleaf](https://www.overleaf.com/)
-+ [TeX Live](https://tug.org/texlive/)
-+ [TeX Live Dev Container](https://github.com/sodalabsio/tex_live_dev_container)
-
 ---
 
 ### 6. Run the AI Code Checker
